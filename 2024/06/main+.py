@@ -92,7 +92,6 @@ def loops(lines, lseen, lstopped, pos, dir):
         dir = (dir + 1) % 4
         to = find_to(crows, ccols, pos, dir)
         move(lines, lseen, pos, to, dir, looped=True)
-
         pos = to
 
     return (pos, dir) in lstopped
@@ -106,15 +105,11 @@ def move(lines, seen, from_, to: tuple[int, int], dir, looped=False):
     if dir % 2 == 0:
         inv = (to[0] - from_[0]) // abs(to[0] - from_[0])
         for r in range(from_[0], to[0] + inv, inv):
+            if looped:
+                lines[r][to[1]] = ":"
+            else:
+                lines[r][to[1]] = "x"
             if (r, to[1]) not in seen:
-                if looped:
-                    try:
-                        lines[r][to[1]] = ":"
-                    except:
-                        print(f"trying to write to {(r, to[1])} (R = {R}, C = {C})")
-                        raise Exception()
-                else:
-                    lines[r][to[1]] = "x"
                 seen.add((r, to[1]))
 
             # see if we would loop if we were to turn right here
@@ -139,11 +134,11 @@ def move(lines, seen, from_, to: tuple[int, int], dir, looped=False):
         inv = (to[1] - from_[1]) // abs(to[1] - from_[1])
 
         for c in range(from_[1], to[1] + inv, inv):
+            if looped:
+                lines[to[0]][c] = ":"
+            else:
+                lines[to[0]][c] = "x"
             if (to[0], c) not in seen:
-                if looped:
-                    lines[to[0]][c] = ":"
-                else:
-                    lines[to[0]][c] = "x"
                 seen.add((to[0], c))
 
             # see if we would loop if we were to turn right here
