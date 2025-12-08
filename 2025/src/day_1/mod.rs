@@ -1,16 +1,13 @@
-use crate::day::Day;
-use std::fs::File;
-use std::io::Read;
+use crate::{
+    day::{Day, Type},
+    load_input,
+};
 
 pub struct Day1;
 
 impl Day for Day1 {
-    const NUMBER: i32 = 1;
-    fn solve(path: String) -> Option<(i64, i64)> {
-        let mut f = File::open(path).ok()?;
-        let mut contents = String::new();
-
-        f.read_to_string(&mut contents).ok()?;
+    fn solve(typ: Type) -> Option<(i64, i64)> {
+        let contents = load_input!(typ);
 
         let mut part1 = 0;
         let mut curr = 50;

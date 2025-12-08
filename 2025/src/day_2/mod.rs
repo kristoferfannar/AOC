@@ -1,16 +1,10 @@
-use crate::day::*;
-use std::fs::File;
-use std::io::Read;
+use crate::{day::*, load_input};
 
 pub struct Day2;
 
 impl Day for Day2 {
-    const NUMBER: i32 = 2;
-    fn solve(path: String) -> Option<(i64, i64)> {
-        let mut file = File::open(path).ok()?;
-        let mut contents = String::new();
-        file.read_to_string(&mut contents).ok()?;
-        contents = contents.trim().to_string();
+    fn solve(typ: Type) -> Option<(i64, i64)> {
+        let contents = load_input!(typ);
 
         let ranges = contents.split(',');
 
