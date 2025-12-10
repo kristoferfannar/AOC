@@ -8,6 +8,7 @@ import_day!(day_1);
 import_day!(day_2);
 import_day!(day_3);
 import_day!(day_4);
+import_day!(day_5);
 
 fn run<D: Day>() -> Result<(), Box<dyn Error>> {
     println!("sample: {:?}", D::solve(Type::Sample));
@@ -22,6 +23,7 @@ fn solve_day(day: i32) -> Result<(), Box<dyn Error>> {
         2 => run::<Day2>()?,
         3 => run::<Day3>()?,
         4 => run::<Day4>()?,
+        5 => run::<Day5>()?,
         _ => panic!("unknown day"),
     };
 
@@ -29,6 +31,6 @@ fn solve_day(day: i32) -> Result<(), Box<dyn Error>> {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    solve_day(4)?;
+    solve_day(5)?;
     Ok(())
 }
