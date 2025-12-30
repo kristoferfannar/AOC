@@ -3,7 +3,7 @@ use crate::{day::*, load_input};
 pub struct Day2;
 
 impl Day for Day2 {
-    fn solve(typ: Type) -> Option<(i64, i64)> {
+    fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
 
         let ranges = contents.split(',');
@@ -67,6 +67,6 @@ impl Day for Day2 {
             }
         });
 
-        return Some((part1.into(), part2.into()));
+        Ok((part1.into(), part2.into()))
     }
 }

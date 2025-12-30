@@ -1,3 +1,7 @@
+use anyhow;
+
+pub type AocResult<T> = anyhow::Result<T>;
+
 #[macro_export]
 macro_rules! import_day {
     ($mod:ident) => {
@@ -17,7 +21,7 @@ macro_rules! load_input {
 }
 
 pub trait Day {
-    fn solve(typ: Type) -> Option<(i64, i64)>;
+    fn solve(typ: Type) -> AocResult<(i64, i64)>;
 }
 
 pub enum Type {

@@ -1,20 +1,22 @@
+use anyhow::Context;
+
 use crate::{
-    day::{Day, Type},
+    day::{AocResult, Day, Type},
     load_input,
 };
 
 pub struct Day5;
 
 impl Day for Day5 {
-    fn solve(typ: Type) -> Option<(i64, i64)> {
+    fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
         let mut part1 = 0;
         let mut part2 = 0;
 
         let mut lines = contents.trim().splitn(2, "\n\n");
 
-        let line1 = lines.next()?;
-        let line2 = lines.next()?;
+        let line1 = lines.next().context("missing line")?;
+        let line2 = lines.next().context("missing line")?;
 
         let mut first: Vec<(i64, i64)> = line1
             .split('\n')
@@ -64,6 +66,6 @@ impl Day for Day5 {
             part2 += max - min + 1;
         }
 
-        Some((part1, part2))
+        Ok((part1, part2))
     }
 }

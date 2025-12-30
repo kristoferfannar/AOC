@@ -1,5 +1,5 @@
 use crate::{
-    day::{Day, Type},
+    day::{AocResult, Day, Type},
     load_input,
 };
 
@@ -30,7 +30,7 @@ impl Day3 {
 }
 
 impl Day for Day3 {
-    fn solve(typ: Type) -> Option<(i64, i64)> {
+    fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
 
         let mut part1: i64 = 0;
@@ -59,6 +59,6 @@ impl Day for Day3 {
             part2 += Self::find_n_largest_in_bank(12, bank);
         });
 
-        Some((part1, part2))
+        Ok((part1, part2))
     }
 }

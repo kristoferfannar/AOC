@@ -1,12 +1,12 @@
 use crate::{
-    day::{Day, Type},
+    day::{AocResult, Day, Type},
     load_input,
 };
 
 pub struct Day1;
 
 impl Day for Day1 {
-    fn solve(typ: Type) -> Option<(i64, i64)> {
+    fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
 
         let mut part1 = 0;
@@ -54,6 +54,6 @@ impl Day for Day1 {
             }
         });
 
-        Some((part1.into(), part2.into()))
+        Ok((part1.into(), part2.into()))
     }
 }

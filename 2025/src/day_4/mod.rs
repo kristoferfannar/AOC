@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 use crate::{
-    day::{Day, Type},
+    day::{AocResult, Day, Type},
     load_input,
 };
 
@@ -29,7 +29,7 @@ impl Day4 {
 }
 
 impl Day for Day4 {
-    fn solve(typ: Type) -> Option<(i64, i64)> {
+    fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
         let mut part1 = 0;
         let mut part2 = 0;
@@ -126,6 +126,6 @@ impl Day for Day4 {
             next.clear();
         }
 
-        Some((part1, part2))
+        Ok((part1, part2))
     }
 }
