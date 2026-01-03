@@ -24,6 +24,7 @@ pub trait Day {
     fn solve(typ: Type) -> AocResult<(i64, i64)>;
 }
 
+#[allow(dead_code)]
 pub enum Type {
     Sample,
     Actual,

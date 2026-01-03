@@ -11,12 +11,12 @@ pub struct Day7;
 impl Day for Day7 {
     fn solve(typ: Type) -> AocResult<(i64, i64)> {
         let contents = load_input!(typ);
-        let mut part1 = 0;
+        let part1;
         let mut part2 = 0;
 
         let mut tachyons = HashSet::<(usize, usize)>::new();
 
-        let mut grid: Vec<Vec<char>> = contents
+        let grid: Vec<Vec<char>> = contents
             .trim_matches('\n')
             .split("\n")
             .map(|line| line.chars().collect())
